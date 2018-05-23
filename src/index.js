@@ -4,6 +4,15 @@ import DripTable from "mui-drip-table";
 
 class App extends React.Component {
 
+  handleOnSelectedRows(displayDataList, prevSelectedList, selectedList) {
+    let selectedDataList = [];
+    selectedList.forEach(function(index) {
+      selectedDataList.push(displayDataList[index]);
+    });
+    // 選択行データのリストをコンソールに表示
+    console.log(selectedDataList);
+  }
+
   render() {
 
     const columns = ["Name", "Title", "Location", "Age", "Salary"];
@@ -43,7 +52,8 @@ class App extends React.Component {
 
     const options = {
       filterType: 'dropdown',
-      responsive: 'stacked'
+      responsive: 'stacked',
+      onRowsSelect: this.handleOnSelectedRows,
     };
 
     return (
